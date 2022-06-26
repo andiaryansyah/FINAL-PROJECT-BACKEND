@@ -45,13 +45,16 @@ async function register(req, res) {
 
 
 async function deleteUser(req, res) {
-    const id = getIdParam(req);
-    await models.user.destroy({
+    const user = await models.user.destroy({
         where: {
-            id: id
+            id:req.params.id
         }
     });
-    res.status(200).json({ status: 'success' })
+    if (user) {
+        res.status(200).json({ status: 'success' })
+    } else {
+        res.status(404).send('404 - Not found');
+    }
 };
 
 module.exports = {
