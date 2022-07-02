@@ -16,10 +16,10 @@ async function login(req, res) {
     const userId = user.id;
     const userEmail = user.email;
     const accessToken = jwt.sign({ userId, userEmail }, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: process.env.ACCESS_TOKEN_EXIPRY || 900
+        expiresIn: process.env.ACCESS_TOKEN_EXPIRED || 900
     });
     const refreshToken = jwt.sign({ userId, userEmail }, process.env.REFRESH_TOKEN_SECRET, {
-        expiresIn: process.env.REFRESH_TOKEN_EXIPRY || 604800
+        expiresIn: process.env.REFRESH_TOKEN_EXPIRED || 604800
     });
 
     await models.auth.upsert({ user_id: userId, refresh_token: refreshToken }, {
@@ -30,7 +30,7 @@ async function login(req, res) {
 
     res.cookie('refreshToken', refreshToken, {
         httpOnly: true,
-        maxAge: process.env.REFRESH_TOKEN_EXIPRY || 604800
+        maxAge: process.env.REFRESH_TOKEN_EXPIRED || 604800
     });
     res.json({ accessToken });
 }
