@@ -1,0 +1,20 @@
+POST http://localhost:3001/api/users HTTP/1.1
+content-type: application/json
+
+{
+    "name": "aryansyah",
+    "email": "aryansyah@gmail.com",
+    "password": "123456",
+    "phone_number":"+12345999"
+}
+###
+GET http://localhost:3001/api/users HTTP/1.1
+content-type: application/json
+###
+
+GET http://localhost:3001/api/users/1 HTTP/1.1
+content-type: application/json
+###
+
+DELETE http://localhost:3001/api/users/6 HTTP/1.1
+content-type: application/json

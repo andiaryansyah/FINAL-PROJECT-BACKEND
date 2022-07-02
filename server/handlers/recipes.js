@@ -3,7 +3,7 @@ const path = require('path');
 const { models } = require('../../storage/definers');
 const { getIdParam, getUserIdParam } = require('../helpers');
 
-async function getAllForHome(req, res) {
+async function getAllRecipe(req, res) {
     try {
         const response = await models.recipe.findAll();
         res.json(response);
@@ -12,7 +12,7 @@ async function getAllForHome(req, res) {
       }
 };
 
-async function getAll(req, res) {
+async function getAllByUserId(req, res) {
     const userId = getUserIdParam(req)
     const recipes = await models.recipe.findAll({
         where: {
@@ -37,7 +37,7 @@ async function getById(req, res) {
     }
 };
 
-async function create (req, res) {
+async function createRecipe (req, res) {
     if (req.files === undefined)
     return res.status(400).json({ msg: "No File Uploaded" });
     const userId = getUserIdParam(req)
@@ -73,7 +73,7 @@ async function create (req, res) {
     
 };
 
-async function update(req, res) {
+async function updateRecipe(req, res) {
     const userId = getUserIdParam(req)
     const recipe = await models.recipe.findOne({
         where: {
@@ -129,7 +129,7 @@ async function update(req, res) {
       }
 };
 
-async function remove(req, res) {
+async function deleteRecipe(req, res) {
     const userId = getUserIdParam(req)
     const recipe = await models.recipe.findOne({
         where: {
@@ -154,9 +154,10 @@ async function remove(req, res) {
 };
 
 module.exports = {
-    getAll,
+    getAllRecipe,
+    getAllByUserId,
     getById,
-    create,
-    update,
-    remove,
+    createRecipe,
+    updateRecipe,
+    deleteRecipe,
 };

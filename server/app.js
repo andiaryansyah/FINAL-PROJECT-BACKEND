@@ -13,7 +13,7 @@ app.use(fileupload());
 
 app.use('/api', authRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/users/:userId/recipes', recipeRoutes);
+app.use('/api', recipeRoutes);
 
 app.use(errorHandler);
 

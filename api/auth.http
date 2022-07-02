@@ -1,0 +1,15 @@
+POST http://localhost:3001/api/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "aryansyah@gmail.com",
+    "password": "123456"
+}
+###
+POST http://localhost:3001/api/token HTTP/1.1
+content-type: application/json
+
+{
+    "id": 1,
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJFbWFpbCI6ImFyeWFAZ21haWwuY29tIiwiaWF0IjoxNjU2NjkzNDk5LCJleHAiOjE2NTcyOTgyOTl9.mnM21iB_DexuzSIZnTfWjhxfRmu8xY6gxcmk0o_kVII"
+}
