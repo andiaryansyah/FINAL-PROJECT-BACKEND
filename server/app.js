@@ -1,5 +1,6 @@
 const express = require('express');
 const fileupload = require("express-fileupload");
+const cors = require('cors')
 const { errorHandler } = require('./middleware')
 const userRoutes = require('./routes/users.route');
 const authRoutes = require('./routes/auth.route');
@@ -9,7 +10,9 @@ const app = express();
 
 
 app.use(express.json());
+app.use(cors({origin: 'http://localhost:5000'}));
 app.use(fileupload());
+
 
 app.use('/api', authRoutes);
 app.use('/api/users', userRoutes);
