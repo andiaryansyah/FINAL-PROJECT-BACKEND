@@ -9,11 +9,19 @@ module.exports = (sequelize) => {
                 primaryKey: true,
                 type: DataTypes.INTEGER
             },
-            name: {
+            title: {
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            description: {
+            category: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            instructions: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            ingredient: {
                 type: DataTypes.STRING,
                 allowNull: false
             },

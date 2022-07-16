@@ -41,8 +41,10 @@ async function createRecipe (req, res) {
     if (req.files === undefined)
     return res.status(400).json({ msg: "No File Uploaded" });
     const userId = getUserIdParam(req)
-    const name = req.body.name;
-    const description = req.body.description;
+    const title = req.body.title;
+    const category = req.body.category;
+    const instructions = req.body.instructions;
+    const ingredient = req.body.ingredient;
     const file = req.files.file;
     const fileSize = file.data.length;
     const ext = path.extname(file.name);
@@ -59,8 +61,10 @@ async function createRecipe (req, res) {
         if (err) return res.status(500).json({ msg: err.message });
         try {
         await models.recipe.create({
-            name: name,
-            description: description,
+            title: title,
+            category: category,
+            instructions: instructions,
+            ingredient: ingredient,
             image: fileName,
             url: url,
             user_id: userId,
@@ -104,15 +108,20 @@ async function updateRecipe(req, res) {
           if (err) return res.status(500).json({ msg: err.message });
         });
       }
-      const name = req.body.name;
-    const description = req.body.description;
+      const title = req.body.title;
+      const category = req.body.category;
+      const instructions = req.body.instructions;
+      const ingredient = req.body.ingredient;
+
       const url = `${req.protocol}://${req.get("host")}/images/${fileName}`;
     
       try {
         await models.recipe.update(
           {
-            name: name,
-            description: description,
+            title: title,
+            category: category,
+            instructions: instructions,
+            ingredient: ingredient,
             image: fileName,
             url: url,
           },
