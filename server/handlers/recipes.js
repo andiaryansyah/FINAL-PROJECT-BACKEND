@@ -44,7 +44,7 @@ async function createRecipe (req, res) {
     const title = req.body.title;
     const category = req.body.category;
     const instructions = req.body.instructions;
-    const ingredient = req.body.ingredient;
+    const ingredients = req.body.ingredients;
     const file = req.files.file;
     const fileSize = file.data.length;
     const ext = path.extname(file.name);
@@ -64,7 +64,7 @@ async function createRecipe (req, res) {
             title: title,
             category: category,
             instructions: instructions,
-            ingredient: ingredient,
+            ingredients: ingredients,
             image: fileName,
             url: url,
             user_id: userId,
@@ -111,7 +111,7 @@ async function updateRecipe(req, res) {
       const title = req.body.title;
       const category = req.body.category;
       const instructions = req.body.instructions;
-      const ingredient = req.body.ingredient;
+      const ingredients = req.body.ingredients;
 
       const url = `${req.protocol}://${req.get("host")}/images/${fileName}`;
     
@@ -121,7 +121,7 @@ async function updateRecipe(req, res) {
             title: title,
             category: category,
             instructions: instructions,
-            ingredient: ingredient,
+            ingredients: ingredients,
             image: fileName,
             url: url,
           },

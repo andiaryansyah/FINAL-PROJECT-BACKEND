@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            ingredient: {
+            ingredients: {
                 type: DataTypes.STRING,
                 allowNull: false
             },

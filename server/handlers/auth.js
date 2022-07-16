@@ -64,6 +64,25 @@ async function refreshAccessToken(req, res) {
     });
 }
 
+async function Logout(req, res) {
+    const refreshToken = req.cookies.refreshToken;
+        if(!refreshToken) return res.sendStatus(204);
+        const user = await models.auth.findAll({ 
+            where: {
+                refresh_token: refreshToken 
+            }
+        });
+        if(!user[0]) return res.sendStatus(204);
+        const userId = user[0].id;
+        await user.destroy({refresh_token: null},{
+            where: {
+                id:userId
+            }
+        });
+        res.clearCookie('refreshToken');
+        return res.sendStatus(200);
+}
+
 module.exports = {
     login,
     refreshAccessToken,
