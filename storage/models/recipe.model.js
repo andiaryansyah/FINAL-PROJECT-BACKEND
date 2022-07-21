@@ -18,11 +18,11 @@ module.exports = (sequelize) => {
                 allowNull: false
             },
             instructions: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(2500),
                 allowNull: false
             },
             ingredients: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(1000),
                 allowNull: false
             },
             image: {
