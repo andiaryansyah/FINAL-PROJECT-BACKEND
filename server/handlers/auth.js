@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const { models } = require('../../storage/definers');
 
 async function login(req, res) {
+    try {
     const user = await models.user.findOne({
         where: {
             email: req.body.email
@@ -15,10 +16,11 @@ async function login(req, res) {
 
     const userId = user.id;
     const userEmail = user.email;
-    const accessToken = jwt.sign({ userId, userEmail }, process.env.ACCESS_TOKEN_SECRET, {
+    const userName = user.name;
+    const accessToken = jwt.sign({ userId, userEmail, userName }, process.env.ACCESS_TOKEN_SECRET, {
         expiresIn: process.env.ACCESS_TOKEN_EXPIRED || 900
     });
-    const refreshToken = jwt.sign({ userId, userEmail }, process.env.REFRESH_TOKEN_SECRET, {
+    const refreshToken = jwt.sign({ userId, userEmail, userName }, process.env.REFRESH_TOKEN_SECRET, {
         expiresIn: process.env.REFRESH_TOKEN_EXPIRED || 604800
     });
 
@@ -27,12 +29,15 @@ async function login(req, res) {
             user_id: userId
         }
     });
-
     res.cookie('refreshToken', refreshToken, {
-        httpOnly: true,
+        httpOnly: false,
         maxAge: process.env.REFRESH_TOKEN_EXPIRED || 604800
     });
     res.json({ accessToken });
+    }
+    catch (error) {
+        res.status(404).json({msg:"Email tidak ditemukan"})
+    }
 }
 
 
@@ -57,33 +62,16 @@ async function refreshAccessToken(req, res) {
 
         const userId = user.id;
         const userEmail = user.email;
-        const accessToken = jwt.sign({ userId, userEmail }, process.env.ACCESS_TOKEN_SECRET, {
+        const userName = user.name;
+    const accessToken = jwt.sign({ userId, userEmail,userName }, process.env.ACCESS_TOKEN_SECRET, {
             expiresIn: '15s'
         });
         res.json({ accessToken });
     });
 }
 
-async function Logout(req, res) {
-    const refreshToken = req.cookies.refreshToken;
-        if(!refreshToken) return res.sendStatus(204);
-        const user = await models.auth.findAll({ 
-            where: {
-                refresh_token: refreshToken 
-            }
-        });
-        if(!user[0]) return res.sendStatus(204);
-        const userId = user[0].id;
-        await user.destroy({refresh_token: null},{
-            where: {
-                id:userId
-            }
-        });
-        res.clearCookie('refreshToken');
-        return res.sendStatus(200);
-}
-
 module.exports = {
     login,
     refreshAccessToken,
+    Logout
 };

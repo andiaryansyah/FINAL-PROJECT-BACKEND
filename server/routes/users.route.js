@@ -11,4 +11,5 @@ router.post('/', checkError(handlers.register));
 router.get('/:id', checkError(handlers.getByIdUser));
 router.delete('/:id', verifyToken, checkError(handlers.deleteUser));
 
+
 module.exports = router;

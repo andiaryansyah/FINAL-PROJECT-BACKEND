@@ -6,7 +6,7 @@ const handlers = require('../handlers/recipes')
 
 const router = express.Router({ mergeParams: true });
 router.post('/users/:userId/recipes', verifyToken, checkError(handlers.createRecipe));
-router.get('/recipes', verifyToken, checkError(handlers.getAllRecipe));
+router.get('/recipes', checkError(handlers.getAllRecipe));
 router.get('/users/:userId/recipes', verifyToken, checkError(handlers.getAllByUserId));
 router.get('/users/:userId/recipes/:id', verifyToken, checkError(handlers.getById));
 router.put('/users/:userId/recipes/:id', verifyToken, checkError(handlers.updateRecipe));
