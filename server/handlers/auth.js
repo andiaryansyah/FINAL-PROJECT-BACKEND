@@ -73,5 +73,4 @@ async function refreshAccessToken(req, res) {
 module.exports = {
     login,
     refreshAccessToken,
-    Logout
 };
