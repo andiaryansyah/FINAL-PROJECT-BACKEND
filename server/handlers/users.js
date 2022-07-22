@@ -26,6 +26,12 @@ async function getByIdUser(req, res) {
 
 async function register(req, res) {
     const { name, email, password, phone_number  } = req.body;
+    const user = await models.user.findOne({
+        where: {
+            email: req.body.email
+        }
+    });
+    if (user) res.status(401).json({ msg: "email already exists" });
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
     if (req.body.id) {

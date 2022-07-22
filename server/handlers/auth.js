@@ -9,7 +9,7 @@ async function login(req, res) {
             email: req.body.email
         }
     });
-    if (!user) res.status(401).json({ error: "unauthorized" });
+    // if (!user) res.status(401).json({ error: "unauthorized" });
 
     const match = await bcrypt.compare(req.body.password, user.password);
     if (!match) return res.status(401).json({ error: "unauthorized" });
@@ -18,7 +18,7 @@ async function login(req, res) {
     const userEmail = user.email;
     const userName = user.name;
     const accessToken = jwt.sign({ userId, userEmail, userName }, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: process.env.ACCESS_TOKEN_EXPIRED || 900
+        expiresIn: process.env.ACCESS_TOKEN_EXPIRED || 604800
     });
     const refreshToken = jwt.sign({ userId, userEmail, userName }, process.env.REFRESH_TOKEN_SECRET, {
         expiresIn: process.env.REFRESH_TOKEN_EXPIRED || 604800
