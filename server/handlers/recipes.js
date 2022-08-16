@@ -88,7 +88,7 @@ async function updateRecipe(req, res) {
       if (!recipe) return res.status(404).json({ msg: "data not found" });
       let fileName = "";
       if (req.files === null) {
-        fileName = models.recipe.image;
+        fileName = recipe.image;
       } else {
         const file = req.files.file;
         const fileSize = file.data.length;
@@ -112,6 +112,7 @@ async function updateRecipe(req, res) {
       const category = req.body.category;
       const instructions = req.body.instructions;
       const ingredients = req.body.ingredients;
+      console.log(fileName)
 
       const url = `${req.protocol}://${req.get("host")}/images/${fileName}`;
     

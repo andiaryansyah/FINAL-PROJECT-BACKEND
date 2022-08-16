@@ -57,7 +57,7 @@ async function deleteUser(req, res) {
         }
     });
     if (user) {
-        res.status(200).json({ status: 'success' })
+        res.status(200).json({ status: 'success' });
     } else {
         res.status(404).send('404 - Not found');
     }
