@@ -9,7 +9,7 @@ async function assertDatabaseConnectionOk() {
     try {
         await db.authenticate();
         console.log('Database connection OK!');
-        // await db.sync()
+        await db.sync()
     } catch (error) {
         console.log('Unable to connect to the database:');
         console.log(error.message);

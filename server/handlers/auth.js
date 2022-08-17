@@ -29,9 +29,10 @@ async function login(req, res) {
             user_id: userId
         }
     });
+    console.log(refreshToken, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     res.cookie('refreshToken', refreshToken, {
-        httpOnly: false,
-        maxAge: process.env.REFRESH_TOKEN_EXPIRED || 604800
+        httpOnly:false,
+        maxAge: 24 * 60 * 60 * 1000
     });
     res.json({ accessToken });
     }
