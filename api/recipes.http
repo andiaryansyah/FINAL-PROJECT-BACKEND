@@ -1,5 +1,5 @@
 #Create Recipe by user ID
-POST http://localhost:3000/api/users/1/recipes HTTP/1.1
+POST https://secure-falls-46921.herokuapp.com/api/users/1/recipes HTTP/1.1
 content-type: multipart/form-data
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJFbWFpbCI6ImFyeWFAZ21haWwuY29tIiwiaWF0IjoxNjU2NjkzNDk5LCJleHAiOjE2NTcyOTgyOTl9.mnM21iB_DexuzSIZnTfWjhxfRmu8xY6gxcmk0o_kVII
 
@@ -10,19 +10,19 @@ file:
 
 ###
 #Get all recipe by user ID
-GET http://localhost:3000/api/users/1/recipes HTTP/1.1
+GET https://secure-falls-46921.herokuapp.com/api/users/1/recipes HTTP/1.1
 content-type: application/json
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJFbWFpbCI6ImFyeWFAZ21haWwuY29tIiwiaWF0IjoxNjU2NjkzNDk5LCJleHAiOjE2NTcyOTgyOTl9.mnM21iB_DexuzSIZnTfWjhxfRmu8xY6gxcmk0o_kVII
 
 ###
 #Get recipe by recipe ID and user ID 
-GET http://localhost:3000/api/users/1/recipes/1 HTTP/1.1
+GET https://secure-falls-46921.herokuapp.com/api/users/1/recipes/1 HTTP/1.1
 content-type: application/json
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJFbWFpbCI6ImFyeWFAZ21haWwuY29tIiwiaWF0IjoxNjU2NjkzNDk5LCJleHAiOjE2NTcyOTgyOTl9.mnM21iB_DexuzSIZnTfWjhxfRmu8xY6gxcmk0o_kVII
 
 ###
 #Update recipe by recipe ID and user ID
-PUT http://localhost:3000/api/users/1/recipes/1 HTTP/1.1
+PUT https://secure-falls-46921.herokuapp.com/api/users/1/recipes/1 HTTP/1.1
 content-type: multipart/form-data
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJFbWFpbCI6ImFyeWFAZ21haWwuY29tIiwiaWF0IjoxNjU2NjkzNDk5LCJleHAiOjE2NTcyOTgyOTl9.mnM21iB_DexuzSIZnTfWjhxfRmu8xY6gxcmk0o_kVII
 
@@ -33,6 +33,6 @@ file:
 
 ###
 #Delete recipe by recipe ID and user ID
-DELETE http://localhost:3000/api/users/1/recipes/7 HTTP/1.1
+DELETE https://secure-falls-46921.herokuapp.com/api/users/1/recipes/7 HTTP/1.1
 content-type: application/json
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJFbWFpbCI6ImFyeWFAZ21haWwuY29tIiwiaWF0IjoxNjU2NjkzNDk5LCJleHAiOjE2NTcyOTgyOTl9.mnM21iB_DexuzSIZnTfWjhxfRmu8xY6gxcmk0o_kVII

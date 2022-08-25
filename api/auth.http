@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/login HTTP/1.1
+POST https://secure-falls-46921.herokuapp.com/api/login HTTP/1.1
 content-type: application/json
 
 {
@@ -6,7 +6,7 @@ content-type: application/json
     "password": "123456"
 }
 ###
-POST http://localhost:3000/api/token HTTP/1.1
+POST https://secure-falls-46921.herokuapp.com/api/token HTTP/1.1
 content-type: application/json
 
 {

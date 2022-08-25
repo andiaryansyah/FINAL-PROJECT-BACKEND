@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/users HTTP/1.1
+POST https://secure-falls-46921.herokuapp.com/api/users HTTP/1.1
 content-type: application/json
 
 {
@@ -8,13 +8,13 @@ content-type: application/json
     "phone_number":"+12345999"
 }
 ###
-GET http://localhost:3000/api/users HTTP/1.1
+GET https://secure-falls-46921.herokuapp.com/api/users HTTP/1.1
 content-type: application/json
 ###
 
-GET http://localhost:3000/api/users/1 HTTP/1.1
+GET https://secure-falls-46921.herokuapp.com/api/users/1 HTTP/1.1
 content-type: application/json
 ###
 
-DELETE http://localhost:3000/api/users/6 HTTP/1.1
+DELETE https://secure-falls-46921.herokuapp.com/api/users/6 HTTP/1.1
 content-type: application/json
