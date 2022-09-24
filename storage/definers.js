@@ -2,8 +2,9 @@ const { Sequelize } = require('sequelize');
 const { applyRelation } = require('./relation');
 
 //check
-const db = new Sequelize('sql6515003','sql6515003','f8psr6rv64',{
-    host:"sql6.freesqldatabase.com",
+const db = new Sequelize('finprodb','admin','Admin12345', {
+    host:"mssql-89019-0.cloudclusters.net",
+    port:'19781',
     dialect:"mysql"
 });
 
