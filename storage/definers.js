@@ -2,8 +2,8 @@ const { Sequelize } = require('sequelize');
 const { applyRelation } = require('./relation');
 
 //check
-const db = new Sequelize('sql6521906','sql6521906','sJq2ssgjHf', {
-    host:"sql6.freesqldatabase.com",
+const db = new Sequelize('finprodb','root','Ary12345', {
+    // host:"",
     dialect:"mysql"
 });
 
